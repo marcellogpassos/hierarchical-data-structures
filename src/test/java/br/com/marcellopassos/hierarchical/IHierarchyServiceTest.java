@@ -27,7 +27,7 @@ public class IHierarchyServiceTest {
         this.service = new HierarchyService<>(organizationUnitGenerator.generate());
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void findAll() {
         final Collection<OrganizationUnit> all = this.service.findAll();
 
@@ -35,7 +35,7 @@ public class IHierarchyServiceTest {
         assertFalse(all.isEmpty());
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void findById() {
         final Long id = 1L;
         final OrganizationUnit found = this.service.findById(id);
@@ -44,21 +44,21 @@ public class IHierarchyServiceTest {
         assertEquals(id, found.getId());
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     void getAncestors() {
         final OrganizationUnit element = this.organizationUnitGenerator.getRandomElement(this.service.findAll());
         final Collection<OrganizationUnit> ancestors = this.service.getAncestors(element);
         assertTrue(ancestors.stream().allMatch(ancestor -> this.service.isAncestor(ancestor, element)));
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void getDescendants() {
         final OrganizationUnit ancestral = this.organizationUnitGenerator.getRandomElement(this.service.findAll());
         final Collection<OrganizationUnit> descendants = this.service.getDescendants(ancestral);
         assertTrue(descendants.stream().allMatch(element -> this.service.isDescendant(element, ancestral)));
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void getTree() {
         final Collection<TreeNode<OrganizationUnit>> trees = this.service.getRoots().stream()
                 .map(this.service::getTree)
@@ -68,7 +68,7 @@ public class IHierarchyServiceTest {
         assertFalse(trees.isEmpty());
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void getRoots() {
         final Collection<OrganizationUnit> roots = this.service.getRoots();
 
@@ -79,7 +79,7 @@ public class IHierarchyServiceTest {
                 .allMatch(Objects::isNull));
     }
 
-    @RepeatedTest(100)
+    @RepeatedTest(10)
     public void isRoot() {
         final OrganizationUnit element = Mockito.mock(OrganizationUnit.class);
 
