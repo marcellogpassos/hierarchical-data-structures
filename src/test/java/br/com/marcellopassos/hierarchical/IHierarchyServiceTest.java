@@ -48,7 +48,7 @@ public class IHierarchyServiceTest {
     void getAncestors() {
         final OrganizationUnit element = this.organizationUnitGenerator.getRandomElement(this.service.findAll());
         final Collection<OrganizationUnit> ancestors = this.service.getAncestors(element);
-        assertTrue(ancestors.stream().allMatch(ancestor -> this.service.isAncestor(ancestor, element)));
+        assertTrue(ancestors.stream().allMatch(ancestor -> this.service.isAncestral(ancestor, element)));
     }
 
     @RepeatedTest(10)

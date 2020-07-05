@@ -78,7 +78,7 @@ public class HierarchyService<T extends IElement<R>, R> implements IHierarchySer
     }
 
     @Override
-    public boolean isAncestor(T ancestral, T element) {
+    public boolean isAncestral(T ancestral, T element) {
         return this.isDescendant(element, ancestral);
     }
 

@@ -20,7 +20,7 @@ public interface IHierarchyService<T extends IElement<R>, R> {
 
     TreeNode<T> getTree(T element);
 
-    boolean isAncestor(T ancestral, T element);
+    boolean isAncestral(T ancestral, T element);
 
     boolean isDescendant(T element, T ancestral);
 
