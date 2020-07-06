@@ -24,5 +24,7 @@ public interface IHierarchyService<T extends IElement<R>, R> {
 
     boolean isDescendant(T element, T ancestral);
 
+    boolean isLeaf(T element);
+
     boolean isRoot(T element);
 }
