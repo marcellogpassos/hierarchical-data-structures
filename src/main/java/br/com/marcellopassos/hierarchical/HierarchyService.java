@@ -95,7 +95,7 @@ public class HierarchyService<T extends IElement<R>, R> implements IHierarchySer
 
     @Override
     public boolean isLeaf(T element) {
-        return !this.getChildren(element).isEmpty();
+        return this.getChildren(element).isEmpty();
     }
 
     @Override
